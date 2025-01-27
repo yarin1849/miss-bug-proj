@@ -1,7 +1,8 @@
 import { utilService } from './util.service.js'
-import { storageService } from './async-storage.service.js'
 
-const STORAGE_KEY = 'bugs'
+
+const BASE_URL = '/api/bug/'
+
 
 _createBugs()
 
@@ -14,7 +15,8 @@ export const bugService = {
 }
 
 function query(filterBy) {
-    return storageService.query(STORAGE_KEY)
+    return axios.get(BASE_URL)
+        .then(res => res.data)
         .then(bugs => {
             if (filterBy.txt) {
                 const regExp = new RegExp(filterBy.txt, 'i')
@@ -29,24 +31,33 @@ function query(filterBy) {
         })
 }
 
+// function getById(bugId) {
+//     return storageService.get(BASE_URL, bugId)
+// }
 function getById(bugId) {
-    return storageService.get(STORAGE_KEY, bugId)
+    return axios.get(BASE_URL + bugId)
+        .then(res => res.data)
 }
 
 function remove(bugId) {
-    return storageService.remove(STORAGE_KEY, bugId)
+    return axios.get(BASE_URL + bugId + '/remove')
+        .then(res => res.data)
 }
 
 function save(bug) {
-    if (bug._id) {
-        return storageService.put(STORAGE_KEY, bug)
-    } else {
-        return storageService.post(STORAGE_KEY, bug)
-    }
+    const url = BASE_URL + 'save'
+    let queryParams = `?title=${bug.id}&severity=${bug.severity}&description=${bug.description}`
+    if (bug._id) queryParams += `&_id=${bug._id}`
+    console.log('url + queryParams:', url + queryParams)
+    return axios.get(url + queryParams)
+        .then(res => res.data)
+        .catch(err => {
+            console.log('err:', err)
+        })
 }
 
 function _createBugs() {
-    let bugs = utilService.loadFromStorage(STORAGE_KEY)
+    let bugs = utilService.loadFromStorage(BASE_URL)
     if (bugs && bugs.length > 0) return
 
     bugs = [
@@ -71,7 +82,7 @@ function _createBugs() {
             _id: "G0053"
         }
     ]
-    utilService.saveToStorage(STORAGE_KEY, bugs)
+    utilService.saveToStorage(BASE_URL, bugs)
 }
 
 function getDefaultFilter() {

@@ -1,13 +1,16 @@
 import express from 'express'
+import cookieParser from 'cookie-parser'
 import { bugService } from './services/bug.service.js'
 import { loggerService } from './services/logger.service.js'
 
 
 const app = express()
+app.use(cookieParser())
 // app.get('/', (req, res) => res.send('Hello there'))
 // app.listen(3030, () => console.log('Server ready at port 3030'))
 
 app.use(express.static('public'))
+
 
 app.get('/api/bug', (req, res) => {
 
@@ -37,7 +40,23 @@ app.get('/api/bug/save', (req, res) => {
 })
 
 app.get('/api/bug/:bugId', (req, res) => {
-    const { bugId } = req.params
+    const { bugId } = req.params;
+
+    let visitedBugs = req.cookies.visitedBugs ? JSON.parse(req.cookies.visitedBugs) : []
+
+    if (!visitedBugs.includes(bugId))
+        visitedBugs.push(bugId)
+
+
+    if (visitedBugs.length > 3) {
+        console.log('User visited too many bugs:', visitedBugs)
+        return res.status(401).send('Wait for a bit')
+    }
+
+    res.cookie('visitedBugs', JSON.stringify(visitedBugs), { maxAge: 1000 * 7 })
+
+    console.log('User visited the following bugs:', visitedBugs)
+
     bugService.getById(bugId)
         .then(bug => res.send(bug))
         .catch(err => {
@@ -55,6 +74,7 @@ app.get('/api/bug/:bugId/remove', (req, res) => {
             res.status(500).send('Cannot remove bug')
         })
 })
+
 
 const port = 3030
 app.listen(port, () =>
