@@ -1,9 +1,13 @@
 import express from 'express'
 import { bugService } from './services/bug.service.js'
+import { loggerService } from './services/logger.service.js'
+
 
 const app = express()
-app.get('/', (req, res) => res.send('Hello there'))
-app.listen(3030, () => console.log('Server ready at port 3030'))
+// app.get('/', (req, res) => res.send('Hello there'))
+// app.listen(3030, () => console.log('Server ready at port 3030'))
+
+app.use(express.static('public'))
 
 app.get('/api/bug', (req, res) => {
 
@@ -51,3 +55,8 @@ app.get('/api/bug/:bugId/remove', (req, res) => {
             res.status(500).send('Cannot remove bug')
         })
 })
+
+const port = 3030
+app.listen(port, () =>
+    loggerService.info(`Server listening on port http://127.0.0.1:${port}/`)
+)
