@@ -1,6 +1,6 @@
 const { useState, useEffect } = React
 
-
+import { utilService } from '../services/util.service.js'
 import { bugService } from '../services/bug.service.local.js'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 
@@ -33,7 +33,7 @@ export function BugIndex() {
         const bug = {
             title: prompt('Bug title?', 'Bug ' + Date.now()),
             severity: +prompt('Bug severity?', 3),
-            description: prompt('Add description')
+            description: prompt('Add description', utilService.makeLorem()),
         }
 
         bugService.save(bug)

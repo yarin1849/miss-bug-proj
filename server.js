@@ -13,15 +13,17 @@ app.use(express.static('public'))
 app.get('/api/bug', (req, res) => {
 
     console.log('req.query', req.query)
-    // const filterBy = {}
     const filterBy = {
         txt: req.query.txt,
         minSeverity: +req.query.minSeverity,
+        labels: req.query.labels,
         pageIdx: req.query.pageIdx
     }
-    console.log('filterBy', filterBy)
 
-    bugService.query(filterBy)
+    const sortBy = req.query.sortBy || 'title'
+    console.log('sortBy', sortBy)
+
+    bugService.query(filterBy, sortBy)
         .then(bugs => res.send(bugs))
         .catch(err => {
             loggerService.error('Cannot get bugs', err)
@@ -55,8 +57,8 @@ app.put('/api/bug/:bugId', (req, res) => {
         _id: req.body._id,
         title: req.body.title,
         description: req.body.description,
-        severity: +req.body.severity || 3,
-        createdAt: req.body.createdAt || Date.now(),
+        severity: +req.body.severity,
+        createdAt: req.body.createdAt,
         labels: req.body.labels,
     }
     console.log('bugToSave', bugToSave)
