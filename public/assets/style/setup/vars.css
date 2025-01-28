@@ -1,4 +1,4 @@
-:root {
+/* :root {
     --bg1: darkcyan;
     --bg2: rgb(50, 165, 204);
     --bg3: darkmagenta;
@@ -10,6 +10,23 @@
     
     --gray1: #444;
     --gray2: lightgray;
+    
+    --success: green;
+    --danger: orangered;
+} */
+
+:root {
+    --bg1: rgb(0, 101, 183);
+    --bg2: rgb(50, 165, 204);
+    --bg3: darkmagenta;
+    
+    --color1: aliceblue;
+    --color2: lightblue;
+    --color3: gold;
+    --color4: goldenrod;
+    
+    --gray1: #1d456d;
+    --gray2: #5bc584;
     
     --success: green;
     --danger: orangered;

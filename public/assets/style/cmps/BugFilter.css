@@ -1,6 +1,7 @@
 .bug-filter {
     background-color: var(--gray2);
     padding: 1em;
+    border-radius: 5px;
 }
 
 .bug-filter h2 {
