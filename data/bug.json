@@ -1,14 +1,24 @@
 [
     {
-        "_id": "E545s",
-        "title": "aaadsffsdaa",
-        "severity": 4,
-        "createdAt": 1738065506892
+        "title": "Bug 1738071900642",
+        "description": "",
+        "severity": 1,
+        "createdAt": 1738071904877,
+        "_id": "xZ9O6"
     },
     {
-        "_id": "3Fhy4",
+        "title": "gfdsgdsgsddsgds",
+        "description": "aaa aaaaaa",
+        "severity": 4,
+        "createdAt": 1738071894097,
+        "_id": "0NnLm"
+    },
+    {
+        "title": "Bug 1738071870972",
+        "description": "",
         "severity": 3,
-        "createdAt": 1738065506892
+        "createdAt": 1738071875940,
+        "_id": "HhT4n"
     },
     {
         "_id": "5nIaE",
@@ -45,11 +55,6 @@
         "description": "sdsdsdssd",
         "severity": 3,
         "createdAt": 1738003776958
-    },
-    {
-        "_id": "ixlU3",
-        "severity": 3,
-        "createdAt": 1737994139199
     },
     {
         "_id": "a9aCz",

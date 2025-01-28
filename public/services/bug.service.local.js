@@ -2,58 +2,49 @@ import { utilService } from './util.service.js'
 
 
 const BASE_URL = '/api/bug/'
-
-
 _createBugs()
 
 export const bugService = {
     query,
-    getById,
+    get,
     save,
     remove,
     getDefaultFilter
 }
 
-function query(filterBy) {
-    return axios.get(BASE_URL)
+function query(filterBy = getDefaultFilter()) {
+    return axios.get(BASE_URL, { params: filterBy })
         .then(res => res.data)
-        .then(bugs => {
-            if (filterBy.txt) {
-                const regExp = new RegExp(filterBy.txt, 'i')
-                bugs = bugs.filter(bug => regExp.test(bug.title))
-            }
-
-            if (filterBy.minSeverity) {
-                bugs = bugs.filter(bug => bug.severity >= filterBy.minSeverity)
-            }
-
-            return bugs
-        })
 }
 
 // function getById(bugId) {
-//     return storageService.get(BASE_URL, bugId)
+//     return axios.get(BASE_URL + bugId)
+//         .then(res => res.data)
 // }
-function getById(bugId) {
+
+function get(bugId) {
     return axios.get(BASE_URL + bugId)
-        .then(res => res.data)
-}
-
-function remove(bugId) {
-    return axios.get(BASE_URL + bugId + '/remove')
-        .then(res => res.data)
-}
-
-function save(bug) {
-    const url = BASE_URL + 'save'
-    let queryParams = `?title=${bug.id}&severity=${bug.severity}&description=${bug.description}`
-    if (bug._id) queryParams += `&_id=${bug._id}`
-    console.log('url + queryParams:', url + queryParams)
-    return axios.get(url + queryParams)
         .then(res => res.data)
         .catch(err => {
             console.log('err:', err)
         })
+}
+
+function remove(bugId) {
+    return axios.delete(BASE_URL + bugId).then(res => res.data)
+}
+
+function save(bug) {
+    if (bug._id) {
+        return axios.put(BASE_URL + bug._id, bug).then(res => res.data).catch(err => { console.log('err:', err) })
+    } else {
+        console.log('bla')
+        return axios.post(BASE_URL, bug).then(res => res.data).catch(err => { console.log('err:', err) })
+    }
+}
+
+function getDefaultFilter() {
+    return { txt: '', minSeverity: 0 }
 }
 
 function _createBugs() {
@@ -85,6 +76,16 @@ function _createBugs() {
     utilService.saveToStorage(BASE_URL, bugs)
 }
 
-function getDefaultFilter() {
-    return { txt: '', minSeverity: 0 }
+
+function _saveBugsToFile() {
+    return new Promise((resolve, reject) => {
+        const data = JSON.stringify(cars, null, 4)
+        fs.writeFile('data/bug.json', data, (err) => {
+            if (err) {
+                console.log(err)
+                return reject(err)
+            }
+            resolve()
+        })
+    })
 }

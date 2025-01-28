@@ -10,7 +10,7 @@ export function BugDetails() {
     const { bugId } = useParams()
 
     useEffect(() => {
-        bugService.getById(bugId)
+        bugService.get(bugId)
             .then(bug => setBug(bug))
             .catch(err => showErrorMsg(`Cannot load bug`, err))
     }, [])
