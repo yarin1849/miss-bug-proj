@@ -1,5 +1,12 @@
 [
     {
+        "title": "Bug 1738075548559",
+        "description": "",
+        "severity": 3,
+        "createdAt": 1738075551405,
+        "_id": "gGExf"
+    },
+    {
         "title": "Bug 1738071900642",
         "description": "",
         "severity": 1,

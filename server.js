@@ -13,7 +13,14 @@ app.use(express.static('public'))
 app.get('/api/bug', (req, res) => {
 
     console.log('req.query', req.query)
-    const filterBy = {}
+    // const filterBy = {}
+    const filterBy = {
+        txt: req.query.txt,
+        minSeverity: +req.query.minSeverity,
+        pageIdx: req.query.pageIdx
+    }
+    console.log('filterBy', filterBy)
+
     bugService.query(filterBy)
         .then(bugs => res.send(bugs))
         .catch(err => {
