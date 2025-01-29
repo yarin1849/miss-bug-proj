@@ -1,38 +1,10 @@
 [
     {
-        "title": "Bug 1738078956754",
-        "description": "",
-        "severity": 3,
-        "createdAt": 1738078959223,
-        "_id": "vsDY6"
-    },
-    {
-        "title": "Bug 1738078803288",
-        "description": "",
-        "severity": 3,
-        "createdAt": 1738078806728,
-        "_id": "n2HE4"
-    },
-    {
-        "title": "Bug 1738078728780",
-        "description": "",
-        "severity": 3,
-        "createdAt": 1738078731646,
-        "_id": "zYsmR"
-    },
-    {
-        "title": "Bug 1738076190125",
-        "description": "dfsds",
-        "severity": 3,
-        "createdAt": 1738076194888,
-        "_id": "6L8FM"
-    },
-    {
-        "title": "Bug 1738075548559",
-        "description": "",
-        "severity": 3,
-        "createdAt": 1738075551405,
-        "_id": "gGExf"
+        "title": "Bla bla",
+        "description": "errors when clicking Save",
+        "severity": 2,
+        "createdAt": 1738164322017,
+        "_id": "8ZSxI"
     },
     {
         "title": "Bug 1738071900642",
@@ -42,18 +14,46 @@
         "_id": "xZ9O6"
     },
     {
+        "title": "Bug 1738075548559",
+        "description": "",
+        "severity": 3,
+        "createdAt": 1738075551405,
+        "_id": "gGExf"
+    },
+    {
+        "title": "Bug 1738076190125",
+        "description": "dfsds",
+        "severity": 3,
+        "createdAt": 1738076194888,
+        "_id": "6L8FM"
+    },
+    {
+        "title": "Bug 1738078728780",
+        "description": "",
+        "severity": 3,
+        "createdAt": 1738078731646,
+        "_id": "zYsmR"
+    },
+    {
+        "title": "Bug 1738078803288",
+        "description": "",
+        "severity": 3,
+        "createdAt": 1738078806728,
+        "_id": "n2HE4"
+    },
+    {
+        "title": "Bug 1738078956754",
+        "description": "",
+        "severity": 3,
+        "createdAt": 1738078959223,
+        "_id": "vsDY6"
+    },
+    {
         "title": "gfdsgdsgsddsgds",
         "description": "aaa aaaaaa",
         "severity": 4,
         "createdAt": 1738071894097,
         "_id": "0NnLm"
-    },
-    {
-        "title": "Bug 1738071870972",
-        "description": "",
-        "severity": 3,
-        "createdAt": 1738071875940,
-        "_id": "HhT4n"
     },
     {
         "_id": "5nIaE",
@@ -109,16 +109,6 @@
         "createdAt": 1737993333599
     },
     {
-        "_id": "qRkVt",
-        "severity": 5,
-        "createdAt": 1737992482845
-    },
-    {
-        "_id": "tM97e",
-        "severity": 4,
-        "createdAt": 1737992473110
-    },
-    {
         "_id": "7FIXJ",
         "severity": 1,
         "createdAt": 1737992079666
@@ -131,132 +121,32 @@
     {
         "_id": "abc123",
         "title": "Cannot save a Car",
-        "description": "problem when clicking Save",
-        "severity": 3,
-        "createdAt": 1542107359454,
-        "labels": [
-            "critical",
-            "need-CR",
-            "dev-branch"
-        ]
-    },
-    {
-        "_id": "abc123",
-        "title": "Cannot save a Car",
         "description": "errors when clicking Save",
         "severity": 3,
         "createdAt": 1542107359454,
-        "creator": {
+        "owner": {
             "_id": "u101",
             "fullname": "Puki Ja"
         }
     },
     {
-        "_id": "abc123",
+        "_id": "abc143",
         "title": "Cannot save a Car",
         "description": "errors when clicking Save",
         "severity": 3,
         "createdAt": 1542107359454,
-        "creator": {
+        "owner": {
             "_id": "u101",
             "fullname": "Puki Ja"
         }
     },
     {
-        "_id": "abc123",
+        "_id": "abc125",
         "title": "Cannot save a Car",
         "description": "errors when clicking Save",
         "severity": 3,
         "createdAt": 1542107359454,
-        "creator": {
-            "_id": "u101",
-            "fullname": "Puki Ja"
-        }
-    },
-    {
-        "_id": "abc123",
-        "title": "Cannot save a Car",
-        "description": "errors when clicking Save",
-        "severity": 3,
-        "createdAt": 1542107359454,
-        "creator": {
-            "_id": "u101",
-            "fullname": "Puki Ja"
-        }
-    },
-    {
-        "_id": "abc123",
-        "title": "Cannot save a Car",
-        "description": "errors when clicking Save",
-        "severity": 3,
-        "createdAt": 1542107359454,
-        "creator": {
-            "_id": "u101",
-            "fullname": "Puki Ja"
-        }
-    },
-    {
-        "_id": "abc123",
-        "title": "Cannot save a Car",
-        "description": "errors when clicking Save",
-        "severity": 3,
-        "createdAt": 1542107359454,
-        "creator": {
-            "_id": "u101",
-            "fullname": "Puki Ja"
-        }
-    },
-    {
-        "_id": "abc123",
-        "title": "Cannot save a Car",
-        "description": "errors when clicking Save",
-        "severity": 3,
-        "createdAt": 1542107359454,
-        "creator": {
-            "_id": "u101",
-            "fullname": "Puki Ja"
-        }
-    },
-    {
-        "_id": "abc123",
-        "title": "Cannot save a Car",
-        "description": "errors when clicking Save",
-        "severity": 3,
-        "createdAt": 1542107359454,
-        "creator": {
-            "_id": "u101",
-            "fullname": "Puki Ja"
-        }
-    },
-    {
-        "_id": "abc123",
-        "title": "Cannot save a Car",
-        "description": "errors when clicking Save",
-        "severity": 3,
-        "createdAt": 1542107359454,
-        "creator": {
-            "_id": "u101",
-            "fullname": "Puki Ja"
-        }
-    },
-    {
-        "_id": "abc123",
-        "title": "Cannot save a Car",
-        "description": "errors when clicking Save",
-        "severity": 3,
-        "createdAt": 1542107359454,
-        "creator": {
-            "_id": "u101",
-            "fullname": "Puki Ja"
-        }
-    },
-    {
-        "_id": "abc123",
-        "title": "Cannot save a Car",
-        "description": "errors when clicking Save",
-        "severity": 3,
-        "createdAt": 1542107359454,
-        "creator": {
+        "owner": {
             "_id": "u101",
             "fullname": "Puki Ja"
         }

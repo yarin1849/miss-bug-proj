@@ -17,3 +17,7 @@ button:hover {
     color: var(--color2);
     background-color: black;
 }
+
+.btns {
+    cursor: pointer;
+}

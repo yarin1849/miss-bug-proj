@@ -99,6 +99,8 @@ export function BugIndex() {
             <button onClick={() => onChangePage(1)}>+</button>
         </section>
 
+        {authService.getLoggedinUser() && <Link to="/bug/edit" >Add Car</Link>}
+
         <BugList
             bugs={bugs}
             onRemoveBug={onRemoveBug}

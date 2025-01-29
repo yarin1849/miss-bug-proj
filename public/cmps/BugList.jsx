@@ -1,8 +1,10 @@
 const { Link } = ReactRouterDOM
 
+import { authService } from '../services/auth.service.js'
 import { BugPreview } from './BugPreview.jsx'
 
 export function BugList({ bugs, onRemoveBug, onEditBug }) {
+    const user = authService.getLoggedinUser()
 
     if (!bugs) return <div>Loading...</div>
     return <ul className="bug-list">
