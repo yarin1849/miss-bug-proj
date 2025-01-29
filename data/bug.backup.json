@@ -260,16 +260,5 @@
             "_id": "u101",
             "fullname": "Puki Ja"
         }
-    },
-    {
-        "_id": "abc123",
-        "title": "Cannot save a Car",
-        "description": "errors when clicking Save",
-        "severity": 3,
-        "createdAt": 1542107359454,
-        "creator": {
-            "_id": "u101",
-            "fullname": "Puki Ja"
-        }
     }
 ]

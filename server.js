@@ -3,6 +3,7 @@ import cookieParser from 'cookie-parser'
 import { bugService } from './services/bug.service.js'
 import { loggerService } from './services/logger.service.js'
 import { authService } from './services/auth.service.js'
+import { userService } from './services/user.service.js'
 
 const app = express()
 
@@ -124,6 +125,7 @@ app.post('/api/auth/signup', (req, res) => {
                 res.cookie('loginToken', loginToken)
                 res.send(user)
             } else {
+
                 res.status(400).send('Cannot signup')
             }
         })
@@ -141,6 +143,11 @@ app.post('/api/auth/login', (req, res) => {
             res.send(user)
         })
         .catch(() => res.status(404).send('Invalid Credentials'))
+})
+
+app.post('/api/auth/logout', (req, res) => {
+    res.clearCookie('loginToken')
+    res.send('logged-out!')
 })
 
 const port = 3030

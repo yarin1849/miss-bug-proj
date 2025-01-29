@@ -39,15 +39,22 @@ function remove(userId) {
 }
 
 function add(user) {
-
-	return getByUsername(user.username) // Check if username exists...
+	console.log('user.username', user.username)
+	return getByUsername(user.username)
+		.catch(err => {
+			if (err === 'User not found!') {
+				return null
+			}
+			return Promise.reject(err)
+		}) // Check if username exists...
 		.then(existingUser => {
+			console.log('existingUser', existingUser)
 			if (existingUser) return Promise.reject('Username taken')
 
 			user._id = utilService.makeId()
+			console.log('user._id', user._id)
 			// Later, we will call the authService here to encrypt the password
 			users.push(user)
-
 			return _saveUsersToFile()
 				.then(() => {
 					user = { ...user }
@@ -56,6 +63,7 @@ function add(user) {
 				})
 		})
 }
+
 
 function _saveUsersToFile() {
 	return new Promise((resolve, reject) => {
