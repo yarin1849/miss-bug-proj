@@ -48,7 +48,7 @@ app.post('/api/bug', (req, res) => {
         labels: req.body.labels,
     }
 
-    bugService.save(bugToSave)
+    bugService.save(bugToSave, loggedinUser)
         .then(savedBug => res.send(savedBug))
         .catch(err => {
             loggerService.error('Cannot save bug:', err)
@@ -58,6 +58,9 @@ app.post('/api/bug', (req, res) => {
 
 //UPDATE
 app.put('/api/bug/:bugId', (req, res) => {
+    const loggedinUser = authService.validateToken(req.cookies.loginToken)
+    if (!loggedinUser) return res.status(401).send(`Can't update car`)
+
     console.log('req.body:', req.body)
     const bugToSave = {
         _id: req.body._id,
@@ -66,9 +69,10 @@ app.put('/api/bug/:bugId', (req, res) => {
         severity: +req.body.severity,
         createdAt: req.body.createdAt,
         labels: req.body.labels,
+        owner: req.body.owner,
     }
     console.log('bugToSave', bugToSave)
-    bugService.save(bugToSave)
+    bugService.save(bugToSave, loggedinUser)
         .then(savedBug => res.send(savedBug))
         .catch(err => {
             loggerService.error('Cannot save bug:', err)
@@ -102,6 +106,8 @@ app.get('/api/bug/:bugId', (req, res) => {
 //REMOVE
 app.delete('/api/bug/:bugId', (req, res) => {
     console.log('delete bug...')
+    const loggedinUser = authService.validateToken(req.cookies.loginToken)
+    if (!loggedinUser) return res.status(401).send(`Can't remove car`)
 
     const { bugId } = req.params
     console.log('bugId', bugId)

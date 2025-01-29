@@ -401,3 +401,10 @@
 29.1.2025, 21:08:21 - ERROR - Cannot get bug: | Cannot find bug - edit
 29.1.2025, 21:08:23 - ERROR - Cannot get bug: | Cannot find bug - edit
 29.1.2025, 21:41:22 - INFO - Server listening on port http://127.0.0.1:3030/
+29.1.2025, 21:45:22 - INFO - Server listening on port http://127.0.0.1:3030/
+29.1.2025, 21:47:04 - INFO - Server listening on port http://127.0.0.1:3030/
+29.1.2025, 21:51:22 - INFO - Server listening on port http://127.0.0.1:3030/
+29.1.2025, 21:53:21 - INFO - Server listening on port http://127.0.0.1:3030/
+29.1.2025, 21:53:45 - INFO - Server listening on port http://127.0.0.1:3030/
+29.1.2025, 21:53:53 - INFO - Server listening on port http://127.0.0.1:3030/
+29.1.2025, 21:54:35 - ERROR - Cannot save bug: | User mismatch bug

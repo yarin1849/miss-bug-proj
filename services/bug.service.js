@@ -63,13 +63,9 @@ function remove(bugId) {
 
 
 function save(bug, loggedinUser) {
-
+    console.log('loggedinUser', loggedinUser)
     if (bug._id) {
-        // const bugIdx = bugs.findIndex(_bug => _bug._id === bug._id)
         const bugToUpdate = bugs.find(currBug => currBug._id === bug._id)
-        // bug = { ...bugs[bugIdx], ...bug }
-        // bugs[bugIdx] = bug
-
         if (bugToUpdate.owner._id !== loggedinUser._id) {
             return Promise.reject('User mismatch bug')
         }
@@ -82,7 +78,7 @@ function save(bug, loggedinUser) {
         bug._id = utilService.makeId()
         bug.description - utilService.makeLorem()
         bug.owner = loggedinUser
-        bugs.unshift(bug)
+        bugs.push(bug)
     }
 
     return _saveBugsToFile().then(() => bug)
