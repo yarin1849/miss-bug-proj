@@ -54,21 +54,34 @@ function getById(bugId) {
 function remove(bugId) {
     console.log('bugId', bugId)
     const bugIdx = bugs.findIndex(bug => bug._id === bugId)
+    if (bugs[bugIdx].owner._id !== loggedinUser._id)
+        return Promise.reject('Cannot remove User mismatch bug - ' + bugId)
     if (bugIdx < 0) return Promise.reject('Cannot remove bug - ' + bugId)
     bugs.splice(bugIdx, 1)
     return _saveBugsToFile()
 }
 
 
-function save(bug) {
+function save(bug, loggedinUser) {
 
     if (bug._id) {
-        const bugIdx = bugs.findIndex(_bug => _bug._id === bug._id)
-        bug = { ...bugs[bugIdx], ...bug }
-        bugs[bugIdx] = bug
+        // const bugIdx = bugs.findIndex(_bug => _bug._id === bug._id)
+        const bugToUpdate = bugs.find(currBug => currBug._id === bug._id)
+        // bug = { ...bugs[bugIdx], ...bug }
+        // bugs[bugIdx] = bug
+
+        if (bugToUpdate.owner._id !== loggedinUser._id) {
+            return Promise.reject('User mismatch bug')
+        }
+
+        bugToUpdate.title = bug.title
+        bugToUpdate.severity = bug.severity
+        bugToUpdate.description = bug.description
+
     } else {
         bug._id = utilService.makeId()
         bug.description - utilService.makeLorem()
+        bug.owner = loggedinUser
         bugs.unshift(bug)
     }
 
