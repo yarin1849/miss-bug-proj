@@ -1,4 +1,4 @@
-const { NavLink } = ReactRouterDOM
+const { Link, NavLink } = ReactRouterDOM
 const { useNavigate } = ReactRouter
 
 import { authService } from '../services/auth.service.js'

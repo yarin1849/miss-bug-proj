@@ -28,7 +28,7 @@ export function LoginSignup({ setLoggedinUser }) {
             .then(user => {
                 setLoggedinUser(user)
                 showSuccessMsg('Logged in successfully')
-                navigate('/car')
+                navigate('/bug')
             })
             .catch(err => {
                 console.log(err)
@@ -41,7 +41,7 @@ export function LoginSignup({ setLoggedinUser }) {
             .then(user => {
                 setLoggedinUser(user)
                 showSuccessMsg('Signed in successfully')
-                navigate('/car')
+                navigate('/bug')
             })
             .catch(err => {
                 console.log(err)

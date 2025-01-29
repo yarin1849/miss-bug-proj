@@ -1,4 +1,6 @@
 const { useState, useEffect } = React
+const { Link } = ReactRouterDOM
+
 
 import { utilService } from '../services/util.service.js'
 import { bugService } from '../services/bug.service.local.js'
@@ -6,6 +8,7 @@ import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 
 import { BugFilter } from '../cmps/BugFilter.jsx'
 import { BugList } from '../cmps/BugList.jsx'
+import { authService } from '../services/auth.service.js'
 
 export function BugIndex() {
     const [bugs, setBugs] = useState(null)
@@ -99,7 +102,7 @@ export function BugIndex() {
             <button onClick={() => onChangePage(1)}>+</button>
         </section>
 
-        {authService.getLoggedinUser() && <Link to="/bug/edit" >Add Car</Link>}
+        {authService.getLoggedinUser() && <Link to="/bug/edit" >Add Bug</Link>}
 
         <BugList
             bugs={bugs}

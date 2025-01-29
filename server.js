@@ -150,6 +150,27 @@ app.post('/api/auth/logout', (req, res) => {
     res.send('logged-out!')
 })
 
+// User API
+app.get('/api/user', (req, res) => {
+    userService.query()
+        .then(users => res.send(users))
+        .catch(err => {
+            loggerService.error('Cannot load users', err)
+            res.status(400).send('Cannot load users')
+        })
+})
+
+app.get('/api/user/:userId', (req, res) => {
+    const { userId } = req.params
+
+    userService.getById(userId)
+        .then(user => res.send(user))
+        .catch(err => {
+            loggerService.error('Cannot load user', err)
+            res.status(400).send('Cannot load user')
+        })
+})
+
 const port = 3030
 app.listen(port, () =>
     loggerService.info(`Server listening on port http://127.0.0.1:${port}/`)

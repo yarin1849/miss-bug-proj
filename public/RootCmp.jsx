@@ -11,6 +11,7 @@ import { BugDetails } from './pages/BugDetails.jsx'
 import { AboutUs } from './pages/AboutUs.jsx'
 import { LoginSignup } from './cmps/LoginSignup.jsx'
 import { authService } from './services/auth.service.js'
+import { UserDetails } from './pages/UserDetails.jsx'
 
 
 export function App() {
@@ -18,14 +19,15 @@ export function App() {
     return <Router>
         <div className="app-wrapper">
             <UserMsg />
-            <AppHeader />
+            <AppHeader loggedinUser={loggedinUser} setLoggedinUser={setLoggedinUser} />
             <main className="container">
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="/auth" element={<LoginSignup setLoggedinUser={setLoggedinUser} />} />
                     <Route path="/bug" element={<BugIndex />} />
                     <Route path="/bug/:bugId" element={<BugDetails />} />
                     <Route path="/about" element={<AboutUs />} />
+                    <Route path="/auth" element={<LoginSignup setLoggedinUser={setLoggedinUser} />} />
+                    <Route path="/user/:userId" element={<UserDetails />} />
                 </Routes>
             </main>
             <AppFooter />

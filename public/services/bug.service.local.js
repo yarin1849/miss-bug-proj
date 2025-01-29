@@ -33,7 +33,7 @@ function save(bug) {
     if (bug._id) {
         return axios.put(BASE_URL + bug._id, bug).then(res => res.data).catch(err => { console.log('err:', err) })
     } else {
-        // car.owner = authService.getLoggedinUser()
+        // bug.owner = authService.getLoggedinUser()
         return axios.post(BASE_URL, bug).then(res => res.data).catch(err => { console.log('err:', err) })
     }
 }
@@ -74,7 +74,7 @@ function getDefaultFilter() {
 
 // function _saveBugsToFile() {
 //     return new Promise((resolve, reject) => {
-//         const data = JSON.stringify(cars, null, 4)
+//         const data = JSON.stringify(bugs, null, 4)
 //         fs.writeFile('data/bug.json', data, (err) => {
 //             if (err) {
 //                 console.log(err)
